@@ -30,17 +30,9 @@ namespace Blog.Implementation.Commands.EfUserCommands
 
         public void Execute(RegisterDto request)
         {
-
+            var cases = new List<int> { 5, 8, 9, 16, 17, 18, 20 ,23};
             _validator.ValidateAndThrow(request);
-            HashSet<UserUseCase> useCases = new HashSet<UserUseCase>();
-            foreach(var i in request.UseCasesId)
-            {
-                var userUseCases = new UserUseCase
-                {
-                    UseCaseId = i
-                };
-                _context.Add(userUseCases);
-            }
+           
            
             var user = new User
             {
@@ -48,8 +40,8 @@ namespace Blog.Implementation.Commands.EfUserCommands
                 LastName = request.LastName,
                 Username = request.Username,
                 Email = request.Email,
-                Password = request.Password,
-                UserUseCases=useCases
+                Password = request.Password
+                //UserUseCases=useCases
             };
             _context.Users.Add(user);
             _context.SaveChanges();
@@ -59,6 +51,18 @@ namespace Blog.Implementation.Commands.EfUserCommands
                 Content="Successfully registration",
                 SendTo=request.Email
             });
+          
+            foreach (var i in cases)
+            {
+                var userUseCases = new UserUseCase
+                {
+                    UseCaseId = i,
+                    UserId=user.Id
+
+                };
+                _context.Add(userUseCases);
+            }
+            _context.SaveChanges();
         }
     }
 }

@@ -28,27 +28,14 @@ namespace Blog.Implementation.Commands.EfArticlesCommand
         }
         public int Id => 6;
 
-        public string Name => "Create new post";
+        public string Name => "Create new post";        
 
-        public void Execute(ArticlesDto request, PicturesDto image)
+        public void Execute(ArticlesDto request)
         {
             _validator.ValidateAndThrow(request);
-            var guid = Guid.NewGuid();
-            var extension = Path.GetExtension(image.Image.FileName);
-
-            var newFileName = guid + extension;
-
-            var path = Path.Combine("wwwroot", "images", newFileName);
-
-            using (var fileStream = new FileStream(path, FileMode.Create))
-            {
-                image.Image.CopyTo(fileStream);
-            }
-
             var pictures = new Pictures
             {
-                src = newFileName
-               
+                src = request.Pictures.src
             };
             _context.Pictures.Add(pictures);
             _context.SaveChanges();
@@ -72,7 +59,6 @@ namespace Blog.Implementation.Commands.EfArticlesCommand
                 _context.ArticleCategories.Add(categories);
                 _context.SaveChanges();
             }
-
         }
     }
 }

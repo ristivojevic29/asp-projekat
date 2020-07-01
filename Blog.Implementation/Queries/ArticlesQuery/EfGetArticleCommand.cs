@@ -30,6 +30,9 @@ namespace Blog.Implementation.Queries.ArticlesQuery
             var pic = _context.Pictures.Find(post.PicturesId);
             var user = _context.Users.Find(post.UserId);
             var cat = _context.Categories.Where(x => categories.Contains(x.Id));
+            var comments = _context.Comments.Where(x => x.ArticleId == post.Id);
+            var rates = _context.Rates.Where(x => x.ArticleId == post.Id);
+            var avg = rates.Select(x => x.RateNumber).Average();
             var ct = cat.Select(d => new CategoryDto
             {
                 Id = d.Id,
@@ -40,8 +43,9 @@ namespace Blog.Implementation.Queries.ArticlesQuery
                 Id = post.Id,
                 Subject = post.Subject,
                 Text = post.Text,
-                PicturesId=post.PicturesId,
-                UserId=post.UserId,
+                PicturesId = post.PicturesId,
+                UserId = post.UserId,
+                ProsecnaOcena = (float)avg,
                 User=new UserDto
                 {
                     FirstName= user.FirstName,
@@ -52,7 +56,11 @@ namespace Blog.Implementation.Queries.ArticlesQuery
                     src=pic.src
                    // alt=pic.alt
                 },
-                Categories = ct
+                Categories = ct,
+                Comments=comments.Select(x=>new CommentDto { 
+                    text=x.Text,
+                    Username=x.User.Username
+                }).ToList()
             };
             return response;
         }

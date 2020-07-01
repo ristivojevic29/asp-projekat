@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using Blog.Application.Exceptions;
+using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System;
@@ -31,13 +32,13 @@ namespace Blog.Api.Core
 
                 switch (ex)
                 {
-                    //case UnauthorizedUseCaseException _:
-                    //    statusCode = StatusCodes.Status403Forbidden;
-                    //    response = new
-                    //    {
-                    //        message = "You are not allowed to execute this operation."
-                    //    };
-                    //    break;
+                    case UnauthorizedUseCaseException _:
+                        statusCode = StatusCodes.Status403Forbidden;
+                        response = new
+                        {
+                            message = "You are not allowed to execute this operation."
+                        };
+                        break;
                     //case EntityNotFoundException _:
                     //    statusCode = StatusCodes.Status404NotFound;
                     //    response = new

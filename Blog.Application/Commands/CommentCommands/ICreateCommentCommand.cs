@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Blog.Application.Commands.CommentCommands
 {
-    public interface ICreateCommentCommand:ICommandComment<CommentDto,int>
+    public interface ICreateCommentCommand:ICommandWithInt<CommentDto,int>
     {
     }
 }

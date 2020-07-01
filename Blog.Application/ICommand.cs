@@ -19,7 +19,7 @@ namespace Blog.Application
     {
         TResult Execute(TSearch search);
     }    
-   public interface ICommandComment<TRequest, TInt> : IUseCase
+   public interface ICommandWithInt<TRequest, TInt> : IUseCase
     {
         void Execute(TRequest request, TInt id);
     }

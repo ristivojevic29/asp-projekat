@@ -10,6 +10,7 @@ namespace Blog.Application.DataTransfer
         public string text { get; set; }
         public int UserId { get; set; }
         public virtual UserDto User { get; set; }
+        public string Username { get; set; }
         public int ArticleId { get; set; }
     }
 }

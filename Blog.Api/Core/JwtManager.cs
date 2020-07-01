@@ -32,7 +32,7 @@ namespace Blog.Api.Core
             var actor = new JwtActor
             {
                 Id=user.Id,
-               // AllowedUseCases = user.UserUseCases.Select(x=>x.UseCaseId),
+                AllowedUseCases = user.UserUseCases.Select(x=>x.UseCaseId),
                 Identity = user.Username
             };
 

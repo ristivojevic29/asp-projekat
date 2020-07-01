@@ -12,7 +12,6 @@ namespace Blog.Api.Core
 
         public string Identity { get; set; }
 
-        public IEnumerable<int> AllowedUseCases => new List<int> { 5, 8, 9, 16, 17, 18, 20 };
-       // public IEnumerable<int> AllowedUseCases { get; set; }
+        public IEnumerable<int> AllowedUseCases { get; set; }
     }
 }

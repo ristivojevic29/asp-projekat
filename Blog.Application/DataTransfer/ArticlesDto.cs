@@ -15,5 +15,7 @@ namespace Blog.Application.DataTransfer
         public int? UserId { get; set; }
         public virtual UserDto User { get; set; }
         public ICollection<CategoryDto> Categories { get; set; }
+        public ICollection<CommentDto> Comments { get; set; }
+        public float ProsecnaOcena { get; set; }
     }
 }

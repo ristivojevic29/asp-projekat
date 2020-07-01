@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Blog.Application.Commands.ArticleCommands
 {
-    public interface ICreateArticleCommand:ICommandWithPicture<ArticlesDto,PicturesDto>
+    public interface ICreateArticleCommand:ICommand<ArticlesDto>
     {
     }
 }

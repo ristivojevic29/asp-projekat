@@ -11,9 +11,10 @@ namespace Blog.EfDataAccess
     {
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new BlogConfiguration());
-            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
-            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.Entity<Article>().HasQueryFilter(p => !p.IsDeleted);
+            modelBuilder.Entity<User>().HasQueryFilter(p => !p.IsDeleted);
+            modelBuilder.Entity<Category>().HasQueryFilter(p => !p.IsDeleted);
+            modelBuilder.Entity<Comment>().HasQueryFilter(p => !p.IsDeleted);
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -53,5 +54,6 @@ namespace Blog.EfDataAccess
         public DbSet<UseCaseLog> UseCaseLogs { get; set; }
         public DbSet<UserUseCase> UserUseCases { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Rate> Rates { get; set; }
     }
 }

@@ -48,7 +48,7 @@ namespace Blog.Api
             }
             command.Execute(request,id);
         }
-        public void ExecuteCommandComment<TRequest>(ICommandComment<TRequest, int> command, TRequest request, int id)
+        public void ExecuteCommandComment<TRequest>(ICommandWithInt<TRequest, int> command, TRequest request, int id)
         {
             _logger.Log(command, _actor, request);
             if (!_actor.AllowedUseCases.Contains(command.Id))

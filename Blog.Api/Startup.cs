@@ -41,6 +41,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 
 namespace Blog.Api
@@ -81,6 +82,8 @@ namespace Blog.Api
             services.AddTransient<IGetAllCommentsQuery, EfGetAllCommentsQuery>();
             services.AddTransient<IUpdateCommentCommand, EfUpdateComment>();
             services.AddTransient<IGetLogsQuery, EfGetLogsQuery>();
+            services.AddTransient<ICreateUserCommand, EfCreateUserCommand>();
+            services.AddTransient<IRateArticle, EfRateCommand>();
             services.AddHttpContextAccessor();
             services.AddTransient<IApplicationActor>(x =>
             {
@@ -110,6 +113,7 @@ namespace Blog.Api
             services.AddTransient<RegisterUserValidator>();
             services.AddTransient<CreateCommentValidator>();
             services.AddTransient<UpdateUserValidator>();
+            services.AddTransient<CreateUserValidator>();
             services.AddTransient<JwtManager>();
             services.AddTransient<IEmailSender, SmtpEmailSender>();
 
@@ -135,7 +139,38 @@ namespace Blog.Api
                 };
             });
             services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "BlogApiProject", Version = "v1" });
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = @"JWT Authorization header using the Bearer scheme. \r\n\r\n 
+                      Enter 'Bearer' [space] and then your token in the text input below.
+                      \r\n\r\nExample: 'Bearer 12345abcdef'",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                {
+                    {
+                        new OpenApiSecurityScheme
+                          {
+                            Reference = new OpenApiReference
+                              {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                              },
+                              Scheme = "oauth2",
+                              Name = "Bearer",
+                              In = ParameterLocation.Header,
 
+                            },
+                            new List<string>()
+                          }
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -151,6 +186,12 @@ namespace Blog.Api
                 x.AllowAnyOrigin();
                 x.AllowAnyMethod();
                 x.AllowAnyHeader();
+            });
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Swagger");
             });
 
             app.UseRouting();

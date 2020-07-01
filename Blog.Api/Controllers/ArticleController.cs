@@ -39,9 +39,10 @@ namespace Blog.Api.Controllers
 
         // POST: api/Article
         [HttpPost]
-        public void Post([FromForm] PicturesDto dtoPicture, [FromBody] ArticlesDto dto,[FromServices] ICreateArticleCommand command)
+        public IActionResult Post([FromBody] ArticlesDto dto,[FromServices] ICreateArticleCommand command)
         {
-            _executor.ExecuteCommandWithPicture(command, dto,dtoPicture);
+            _executor.ExecuteCommand(command, dto);
+            return NoContent();
         }
 
         // PUT: api/Article/5

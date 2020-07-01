@@ -36,8 +36,10 @@ namespace Blog.Api.Controllers
 
         // POST: api/User
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] UserDto dto,[FromServices] ICreateUserCommand command)
         {
+            _executor.ExecuteCommand(command, dto);
+            return NoContent();
         }
 
         // PUT: api/User/5
