@@ -1,0 +1,15 @@
+C:\Users\baner\source\repos\Blog\Blog.EfDataAccess\bin\Debug\netcoreapp3.1\Blog.EfDataAccess.deps.json
+C:\Users\baner\source\repos\Blog\Blog.EfDataAccess\bin\Debug\netcoreapp3.1\Blog.EfDataAccess.dll
+C:\Users\baner\source\repos\Blog\Blog.EfDataAccess\bin\Debug\netcoreapp3.1\Blog.EfDataAccess.pdb
+C:\Users\baner\source\repos\Blog\Blog.EfDataAccess\obj\Debug\netcoreapp3.1\Blog.EfDataAccess.AssemblyInfoInputs.cache
+C:\Users\baner\source\repos\Blog\Blog.EfDataAccess\obj\Debug\netcoreapp3.1\Blog.EfDataAccess.AssemblyInfo.cs
+C:\Users\baner\source\repos\Blog\Blog.EfDataAccess\obj\Debug\netcoreapp3.1\Blog.EfDataAccess.dll
+C:\Users\baner\source\repos\Blog\Blog.EfDataAccess\obj\Debug\netcoreapp3.1\Blog.EfDataAccess.pdb
+C:\Users\baner\source\repos\Blog\Blog.EfDataAccess\obj\Debug\netcoreapp3.1\Blog.EfDataAccess.csprojAssemblyReference.cache
+C:\Users\baner\source\repos\Blog\Blog.EfDataAccess\bin\Debug\netcoreapp3.1\Blog.EfDataAccess.runtimeconfig.json
+C:\Users\baner\source\repos\Blog\Blog.EfDataAccess\bin\Debug\netcoreapp3.1\Blog.EfDataAccess.runtimeconfig.dev.json
+C:\Users\baner\source\repos\Blog\Blog.EfDataAccess\obj\Debug\netcoreapp3.1\Blog.EfDataAccess.genruntimeconfig.cache
+C:\Users\baner\source\repos\Blog\Blog.EfDataAccess\bin\Debug\netcoreapp3.1\Blog.Domain.dll
+C:\Users\baner\source\repos\Blog\Blog.EfDataAccess\bin\Debug\netcoreapp3.1\Blog.Domain.pdb
+C:\Users\baner\source\repos\Blog\Blog.EfDataAccess\obj\Debug\netcoreapp3.1\Blog.EfDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\baner\source\repos\Blog\Blog.EfDataAccess\obj\Debug\netcoreapp3.1\Blog.EfDataAccess.csproj.CopyComplete

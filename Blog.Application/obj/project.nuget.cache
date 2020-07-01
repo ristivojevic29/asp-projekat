@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "H1Rkui68szBkL4TY0UNUc7Ddo54Pk8ZR5s/QF85fMJg4BVwkA3aymPqwdIxXBKUXrtschS2hvq5/AR7kVi2i2Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\baner\\source\\repos\\Blog\\Blog.Application\\Blog.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\baner\\.nuget\\packages\\microsoft.aspnetcore.http.features\\3.1.5\\microsoft.aspnetcore.http.features.3.1.5.nupkg.sha512",
+    "C:\\Users\\baner\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.5\\microsoft.extensions.primitives.3.1.5.nupkg.sha512",
+    "C:\\Users\\baner\\.nuget\\packages\\system.io.pipelines\\4.7.1\\system.io.pipelines.4.7.1.nupkg.sha512"
+  ],
+  "logs": []
+}
